@@ -13,8 +13,7 @@ import Foundation
 
 /// Interface that allows custom formatting of all values inside the chart before they are drawn to the screen.
 ///
-/// Simply create your own formatting class and let it implement ValueFormatter. Then override the stringForValue()
-/// method and return whatever you want.
+/// Simply create your own formatting class and let it implement ValueFormatter. Then override the stringForValue() method and return whatever you want.
 
 @objc(IChartValueFormatter)
 public protocol IValueFormatter: class
@@ -24,13 +23,15 @@ public protocol IValueFormatter: class
     ///
     /// For performance reasons, avoid excessive calculations and memory allocations inside this method.
     ///
-    /// - returns:                   The formatted label ready to be drawn
+    /// - returns:                    The formatted label ready to be drawn
     ///
-    /// - parameter value:           The value to be formatted
+    /// - parameter value:            The value to be formatted
     ///
-    /// - parameter dataSetIndex:    The index of the DataSet the entry in focus belongs to
+    /// - parameter entry:            The chart data entry the value belongs to (e.g. in BarChart, this is of class BarEntry)
     ///
-    /// - parameter viewPortHandler: provides information about the current chart state (scale, translation, ...)
+    /// - parameter dataSetIndex:     The index of the DataSet the entry in focus belongs to
+    ///
+    /// - parameter viewPortHandler:  Provides information about the current chart state (scale, translation, ...)
     ///
     func stringForValue(_ value: Double,
                         entry: ChartDataEntry,
